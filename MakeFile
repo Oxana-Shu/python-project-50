@@ -1,2 +1,5 @@
+install:
+	uv tool install
+
 gendiff:
 	uv run gendiff
