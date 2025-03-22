@@ -1,0 +1,2 @@
+gendiff:
+	uv run gendiff
