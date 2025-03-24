@@ -26,4 +26,4 @@ jobs:
           QLTY_COVERAGE_TOKEN: ${{secrets.QLTY_COVERAGE_TOKEN}}
         with:
           coverage-token: {{secrets.QLTY_COVERAGE_TOKEN}}
-          files: target/lcov.info
+          files: python-project-50/gendiff/*.py
