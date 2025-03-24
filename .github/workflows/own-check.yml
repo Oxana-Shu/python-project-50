@@ -22,6 +22,8 @@ jobs:
           make check
       - name: Test & publish code coverage
         uses: qltysh/qlty-action/coverage@main
+        env:
+          QLTY_COVERAGE_TOKEN: ${{secrets.QLTY_COVERAGE_TOKEN}}
         with:
-          coverage-token: {{secrets.QLTY_COVERAGE_TOKEN}}
-          files: target/lcov.info
+          coverageCommand: make test-coverage
+          debug: true
