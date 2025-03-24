@@ -25,5 +25,5 @@ jobs:
         env:
           QLTY_COVERAGE_TOKEN: ${{secrets.QLTY_COVERAGE_TOKEN}}
         with:
-          coverageCommand: make test-coverage
-          debug: true
+          coverage-token: {{secrets.QLTY_COVERAGE_TOKEN}}
+          files: target/lcov.info
