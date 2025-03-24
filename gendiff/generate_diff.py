@@ -1,9 +1,9 @@
-from gendiff.engine import read_json
+from gendiff.engine import pars_file
 
 
 def generate_diff(file_path1, file_path2):
-    file1 = read_json(file_path1)
-    file2 = read_json(file_path2)
+    file1 = pars_file(file_path1)
+    file2 = pars_file(file_path2)
     all_keys = file1.keys() | file2.keys()
     remove_keys = file1.keys() - file2.keys()
     add_keys = file2.keys() - file1.keys()
@@ -21,3 +21,5 @@ def generate_diff(file_path1, file_path2):
                 diff[f'- {key}'] = file1[key]
                 diff[f'+ {key}'] = file2[key]
     return diff
+
+
