@@ -43,6 +43,9 @@ wheels = [
 name = "hexlet-code"
 version = "0.1.0"
 source = { editable = "." }
+dependencies = [
+    { name = "pytest-cov" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -52,6 +55,7 @@ dev = [
 ]
 
 [package.metadata]
+requires-dist = [{ name = "pytest-cov", specifier = ">=6.0.0" }]
 
 [package.metadata.requires-dev]
 dev = [
