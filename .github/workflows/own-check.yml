@@ -21,10 +21,7 @@ jobs:
         run: |
           make check
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v9.0.0
-        #if: github.ref_name == 'main'
-        env:
-          QLTY_COVERAGE_TOKEN: ${{ secrets.QLTY_COVERAGE_TOKEN }}
+      - uses: qltysh/qlty-action/coverage@main
         with:
-          coverageCommand: make test-coverage
-          debug: true
+          coverage-token: {{secrets.QLTY_COVERAGE_TOKEN}}
+          files: target/lcov.info
