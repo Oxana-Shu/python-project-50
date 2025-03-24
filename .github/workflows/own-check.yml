@@ -20,10 +20,3 @@ jobs:
       - name: Run linter and pytest
         run: |
           make check
-      - name: Test & publish code coverage
-        uses: qltysh/qlty-action/coverage@main
-        env:
-          QLTY_COVERAGE_TOKEN: ${{secrets.QLTY_COVERAGE_TOKEN}}
-        with:
-          coverage-token: {{secrets.QLTY_COVERAGE_TOKEN}}
-          files: python-project-50/gendiff/*.py
