@@ -22,40 +22,40 @@ def current_indent(depth):
 
 def pars_diff(diff, depth):
     current_result = []
-    for key, value in diff.items():
-        status_value = value[0]
+    for key, content in diff.items():
+        status_value = content['status']
         if status_value == 'remove':
             current_result.append(
                 f'{current_indent(depth)}  - {key}: {
-                    check_value(value[1], depth + 2)
+                    check_value(content['value'], depth + 2)
                 }'
             )
         elif status_value == 'add':
             current_result.append(
                 f'{current_indent(depth)}  + {key}: {
-                    check_value(value[1], depth + 2)
+                    check_value(content['value'], depth + 2)
                 }'
             )
         elif status_value == 'unchange':
             current_result.append(
                 f'{current_indent(depth)}    {key}: {
-                    check_value(value[1], depth + 2)
+                    check_value(content['value'], depth + 2)
                 }'
             )
         elif status_value == 'change':
             current_result.append(
                 f'{current_indent(depth)}  - {key}: {
-                    check_value(value[1], depth + 2)
+                    check_value(content['value']['old_value'], depth + 2)
                 }'
             )
             current_result.append(
                 f'{current_indent(depth)}  + {key}: {
-                    check_value(value[2], depth + 2)
+                    check_value(content['value']['new_value'], depth + 2)
                 }'
             )
         elif status_value == 'child':
             current_result.append(f"{current_indent(depth)}    {key}: {{")
-            current_result.extend(pars_diff(value[1], depth + 1))
+            current_result.extend(pars_diff(content['value'], depth + 1))
             current_result.append(f"{current_indent(depth + 1)}}}")
     return current_result
 

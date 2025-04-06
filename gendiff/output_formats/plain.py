@@ -14,9 +14,9 @@ def plain(file1, file2):
 
 def pars_diff(diff, buff_properties):
     current_result = []
-    for key, value in diff.items():
-        status_value = value[0]
-        if status_value == 'unchange' and isinstance(value[1], dict):
+    for key, content in diff.items():
+        status_value = content['status']
+        if status_value == 'unchange' and isinstance(content['value'], dict):
             buff_properties.append(key)
         elif status_value == 'remove':
             buff_properties.append(key)
@@ -28,7 +28,7 @@ def pars_diff(diff, buff_properties):
             buff_properties.append(key)
             current_result.append(
                 f"Property '{".".join(buff_properties)}' was added with value: {
-                    check_value(value[1])
+                    check_value(content['value'])
                 }"
             )
             buff_properties.pop()
@@ -36,13 +36,13 @@ def pars_diff(diff, buff_properties):
             buff_properties.append(key)
             current_result.append(
                 f"Property '{".".join(buff_properties)}' was updated. From {
-                    check_value(value[1])
-                } to {check_value(value[2])}"
+                    check_value(content['value']['old_value'])
+                } to {check_value(content['value']['new_value'])}"
             )
             buff_properties.pop()
         elif status_value == 'child':
             buff_properties.append(key)
-            current_result.extend(pars_diff(value[1], buff_properties))
+            current_result.extend(pars_diff(content['value'], buff_properties))
             buff_properties.pop()
     return current_result
 
