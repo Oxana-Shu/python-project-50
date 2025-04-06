@@ -62,6 +62,12 @@ def pars_diff(diff, depth):
 
 def check_value(value, depth):
     if not isinstance(value, dict):
+        if isinstance(value, bool):
+            if value:
+                return 'true'
+            return 'false'
+        elif value is None:
+            return 'null'
         return value
     else:
         current_value = ['{\n']
