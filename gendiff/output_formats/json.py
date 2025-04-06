@@ -26,7 +26,7 @@ def pars_diff(diff, d):
             line = (
                 f'\n{c_i(d)}"{key}": {{\n{c_i(d + 1)}"status": '
                 f'"{status_value}", \n{c_i(d + 1)}"value": '
-                f'{check_value(content["value"], d + 2)},\n{c_i(d)}}},'
+                f'{check_value(content["value"], d + 2)}\n{c_i(d)}}},'
             )
             current_result.append(line)
         elif status_value == 'change':
@@ -36,8 +36,8 @@ def pars_diff(diff, d):
                 f'"old_value": '
                 f'{check_value(content["value"]["old_value"], d + 3)}, '
                 f'\n{c_i(d + 2)}"new_value": '
-                f'{check_value(content["value"]["new_value"], d + 3)},'
-                f'\n{c_i(d + 2)}}},\n{c_i(d + 1)}}},\n{c_i(d)}}},'
+                f'{check_value(content["value"]["new_value"], d + 3)}'
+                f'\n{c_i(d + 2)}}}\n{c_i(d + 1)}}}\n{c_i(d)}}},'
             )
             current_result.append(line)
         elif status_value == 'child':
@@ -47,6 +47,7 @@ def pars_diff(diff, d):
                 f'{{ {pars_diff(content["value"], d + 2)}\n{c_i(d)}}},'
             )
             current_result.append(line)
+    current_result[-1] = current_result[-1][:-1]
     return "".join(current_result)
 
 
@@ -65,7 +66,8 @@ def check_value(value, depth):
         current_value = ['{']
         for k, v in value.items():
             current_value.append(
-                f'\n{current_indent(depth)}"{k}": {check_value(v, depth + 2)},'
+                f'\n{current_indent(depth)}"{k}": {check_value(v, depth + 1)},'
             )
-        current_value.append(f'\n{current_indent(depth)}}}')
+        current_value[-1] = current_value[-1][:-1]
+        current_value.append(f'\n{current_indent(depth - 1)}}}')
     return "".join(list(chain.from_iterable(current_value)))
