@@ -37,14 +37,15 @@ def pars_diff(diff, d):
                 f'{check_value(content["value"]["old_value"], d + 3)}, '
                 f'\n{c_i(d + 2)}"new_value": '
                 f'{check_value(content["value"]["new_value"], d + 3)}'
-                f'\n{c_i(d + 2)}}}\n{c_i(d + 1)}}}\n{c_i(d)}}},'
+                f'\n{c_i(d + 2)}}}\n{c_i(d + 1)}}},'
             )
             current_result.append(line)
         elif status_value == 'child':
             line = (
                 f'\n{c_i(d)}"{key}": {{\n{c_i(d + 1)}"status": '
                 f'"{status_value}", \n{c_i(d + 1)}"value": '
-                f'{{ {pars_diff(content["value"], d + 2)}\n{c_i(d)}}},'
+                f'{{ {pars_diff(content["value"], d + 2)}\n'
+                f'{c_i(d + 1)}}}\n{c_i(d)}}},'
             )
             current_result.append(line)
     current_result[-1] = current_result[-1][:-1]
