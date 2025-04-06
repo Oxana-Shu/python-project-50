@@ -13,3 +13,6 @@ Difference between 2 recursive json files in stylish format:
 
 Difference between 2 recursive json files in plain format:
 <img src="https://github.com/Oxana-Shu/python-project-50/blob/main/images/plain.svg">
+
+Difference between 2 recursive json files in json format:
+<img src="https://github.com/Oxana-Shu/python-project-50/blob/main/images/json.svg">
