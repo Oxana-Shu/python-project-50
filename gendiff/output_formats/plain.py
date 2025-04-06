@@ -55,6 +55,8 @@ def check_value(value):
             return 'false'
         elif value is None:
             return 'null'
+        elif isinstance(value, int) or isinstance(value, float):
+            return value
         return f"'{value}'"
     else:
         return '[complex value]'
