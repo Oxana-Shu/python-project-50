@@ -1,9 +1,7 @@
 from itertools import chain
 
 from gendiff.build_diff import build_diff
-
-NUM_OF_INDENTS = 4
-SPACE = ' '
+from gendiff.constants import NUM_OF_INDENTS, SPACE
 
 
 def stylish(file1, file2):

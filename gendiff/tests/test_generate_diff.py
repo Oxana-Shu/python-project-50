@@ -17,3 +17,12 @@ def test_plain():
     expected = open(path_assert, 'r').read()
 
     assert generate_diff(path1, path2, format_name='plain') == expected
+
+
+def test_json():
+    path1 = 'gendiff/tests/test_data/file1.json'
+    path2 = 'gendiff/tests/test_data/file2.json'
+    path_assert = 'gendiff/tests/test_data/expected_json.txt'
+    expected = open(path_assert, 'r').read()
+
+    assert generate_diff(path1, path2, format_name='json') == expected
