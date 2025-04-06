@@ -8,3 +8,8 @@ Difference between 2 simple json files
 Difference between 2 simple yaml files
 <img src="https://github.com/Oxana-Shu/python-project-50/blob/main/images/simple_yaml.svg">
 
+Difference between 2 recursive json files in stylish format:
+<img src="https://github.com/Oxana-Shu/python-project-50/blob/main/images/stylish.svg">
+
+Difference between 2 recursive json files in plain format:
+<img src="https://github.com/Oxana-Shu/python-project-50/blob/main/images/plain.svg">
