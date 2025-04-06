@@ -1,0 +1,8 @@
+.venv
+.pytest_cache
+.ruff_cache
+gendiff/__pycache__/
+gendiff/tests/__pycache__/
+gendiff/output_formats/__pycache__/
+gendiff/scripts/__pycache__/
+dist/
